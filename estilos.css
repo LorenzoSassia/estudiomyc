@@ -1,0 +1,39 @@
+.imagen-fondo {
+    position: relative;
+    filter: brightness(0.5);
+}
+
+.container-formulario-login {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-image: url('tu-imagen.jpg');
+    background-size: cover;
+}
+
+.form-overlay {
+    position: absolute;
+    bottom: 230%;
+    left: 230%;
+    transform: translate(-50%, -50%); /* Centra el formulario */
+    background-color: rgba(255, 255, 255, 0.753); /* Fondo blanco semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgb(255, 253, 253);
+    z-index: 1; /* Asegúrate que esté por encima de la imagen */
+  }
+
+.body-color-fondo {
+    background-color: rgba(26, 25, 25, 0.89);
+  }
+
+.color-blanco{
+    text-align: center;
+    font-size: 42px;
+    font-family: 'sans-serif', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(252, 252, 252);
+}
+
+
+
+  
