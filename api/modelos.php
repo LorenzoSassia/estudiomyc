@@ -81,8 +81,7 @@ class ModeloABM  extends Modelo {
     * Selecciona datos de una tabla
     */
     public function seleccionar() {
-        // SELECT * FROM productos WHERE id=3 ORDER BY id LIMIT 10
-
+        // SELECT * FROM clientes WHERE id=3 ORDER BY id LIMIT 10
         // Guardamos en el $sql la instruccion SELECT
         $sql = "SELECT $this->campos FROM $this->tabla";
         // Si el criterio NO es igual a NADA
@@ -112,7 +111,7 @@ class ModeloABM  extends Modelo {
       @param valores Los valores a insertar  
     */
     public function insertar($valores){
-        // INSERT INTO productos(codigo, nombre, descripcion, precio) VALUES ('201', 'Samsung A54', 'Procesador...', '150000')
+        // INSERT INTO clientes
         $campos = '';
         $datos = '';
         // Para cada $valores como $key => $value
@@ -136,7 +135,7 @@ class ModeloABM  extends Modelo {
      * @param valores: los valores a modificar
      */
     public function actualizar($valores) {
-        // UPDATE productos SET precio = '350000' WHERE id=8
+        // UPDATE clientes SET precio = '350000' WHERE id=8
         $sql = "UPDATE $this->tabla SET ";
         // Para cada $valores como $key => $value
         foreach($valores as $key => $value) {
@@ -154,7 +153,7 @@ class ModeloABM  extends Modelo {
      * Elimina registros de una tabla
      */
     public function eliminar() {
-        // DELETE FROM productos WHERE id='8'
+        // DELETE FROM clientes WHERE id='8'
         $sql = "DELETE FROM $this->tabla WHERE $this->criterio";
         $this->db->query($sql); //Ejecutamos la instruccion
     }

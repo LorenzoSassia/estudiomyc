@@ -14,32 +14,20 @@ const controlUsuario = () => {
         btnNuevo.style.display = 'none';
     }
 };
+function login() {
+// Muestra las opciones para el usuario logueado y oculta el botón de login
+document.querySelectorAll('.logged-in').forEach(item => {
+    item.style.display = 'block';
+});
+document.getElementById('login-btn').style.display = 'none';
+}     
 
-/**
- * Muestra el nav completo  *
- */
-function mostrarNav() {
-    mostrarNav.map(nav =>
-    (listado.innerHTML += `
-                  <nav class="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
-                 <div class="container-fluid">
-            <a class="navbar-brand" href="./"><img src='./iconos/balance-icono.svg'>MYC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item ${logueado?'d-flex':'d-none'}">
-                        <a class="nav-link active" aria-current="page" href="./clientes.html">Clientes</a>
-                    </li>
-                    <li class="nav-item ${logueado?'d-flex':'d-none'}">
-                        <a class="nav-link active" aria-current="page" href="./expedientes.html">Expedientes</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav 
-      `)
-    );
+// Al cargar la página, verifica si el usuario ya está logueado
+window.onload = function() {
+    if (sessionStorage.getItem('usuario')) {
+        document.querySelectorAll('.logged-in').forEach(item => {
+            item.style.display = 'block';
+        });
+        document.getElementById('login-btn').style.display = 'none';
+    }
 }

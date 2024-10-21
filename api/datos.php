@@ -26,7 +26,7 @@ if(isset($_GET['tabla'])) {
             if(is_uploaded_file($_FILES['imagen']['tmp_name'])) { // Si esta subido el archivo temporal
                 $tmp_nombre = $_FILES['imagen']['tmp_name'];
                 $nombre = $_FILES['imagen']['name'];
-                $destino = '../imagenes/productos/'.$nombre;
+                $destino = ''.$nombre;
                 if(move_uploaded_file($tmp_nombre, $destino)){ // Si se puede mover el archivo temporal a destino
                     $mensaje = 'Archivo subido correctamente';
                     $valores['imagen'] = $nombre; // Agregamos el array $valores el nombre de la imagen
