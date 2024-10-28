@@ -36,68 +36,13 @@
   <div id="alerta"></div>
   <main class="container">
     <!-- Botón que inicia el Modal -->
-    <button type="button" class="btn btn-light" data-bs-toggle="modal" id="btnNuevo">
+    <button type="button" class="btn btn-light logged-in" data-bs-toggle="modal" id="btnNuevo" >
       Nuevo Cliente
     </button>
     <section>
-        <div class="row" id="listado"></div>
-      </section> 
-    <section>
-      <div class="container text-center ">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card mb-3" style="max-width: 620px;">
-              <div class="row g-0 ">
-                <div class="col-md-4">
-                  <img src="./imagenes/cliente-sin-imagen.png" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre del Cliente</h5>
-                    <p class="card-text">Descripcion del Cliente</p>
-                    <p class="card-text"><small class="text-body-secondary">Expedientes</small></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container text-center ">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="card mb-3" style="max-width: 620px;">
-                  <div class="row g-0 ">
-                    <div class="col-md-4">
-                      <img src="./imagenes/cliente-sin-imagen.png" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">Nombre del Cliente</h5>
-                        <p class="card-text">Descripcion del Cliente</p>
-                        <p class="card-text"><small class="text-body-secondary">Expedientes</small></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="container text-center ">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="card mb-3" style="max-width: 620px;">
-                      <div class="row g-0 ">
-                        <div class="col-md-4">
-                          <img src="./imagenes/cliente-sin-imagen.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                          <div class="card-body">
-                            <h5 class="card-title">Nombre del Cliente</h5>
-                            <p class="card-text">Descripcion del Cliente</p>
-                            <p class="card-text"><small class="text-body-secondary">Expedientes</small></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <div class="row" id="listado"></div>
     </section>
+    
 
     <!-- Modal -->
 
@@ -123,26 +68,28 @@
                   <div class="col-md-7">
                     <div class="row">
                       <div class="form-floating col-md-3">
-                        <input type="number" name="codigo" id="codigo" class="form-control" placeholder="Codigo">
-                        <label for="codigo"> Codigo</label>
+                        <input type="text" name="tipoPersona" id="tipoPersona" class="form-control"
+                          placeholder="Tipo de Persona">
+                        <label for="tipoPersona"> Tipo de Persona</label>
                       </div>
                       <div class="form-floating col-9">
-                        <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion">
-                        <label for="direccion"> Direccion</label>
+                        <input type="text" name="tipoDni" id="tipoDni" class="form-control" placeholder="Tipo de DNI">
+                        <label for="tipoDni"> Tipo de DNI</label>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-floating col-3">
-                        <input type="number" name="numero" id="numero" class="form-control" placeholder="Numero">
-                        <label for="numero"> Numero</label>
+                        <input type="text" name="apellidoRsocial" id="apellidoRsocial" class="form-control"
+                          placeholder="Apellido o Razon Social">
+                        <label for="apellidoRsocial"> Apellido o Razon Social</label>
                       </div>
                       <div class="form-floating col-md-3">
-                        <input type="text" name="letra" id="letra" class="form-control" placeholder="Letra">
-                        <label for="letra"> Letra</label>
+                        <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombres">
+                        <label for="nombres"> Nombres</label>
                       </div>
                       <div class="form-floating col-md-3">
-                        <input type="number" name="piso" id="piso" class="form-control" placeholder="Piso">
-                        <label for="piso"> Piso</label>
+                        <input type="text" name="domicilio" id="domicilio" class="form-control" placeholder="Domicilio">
+                        <label for="domicilio"> Domicilio</label>
                       </div>
                       <div class="form-floating col-md-3">
                         <input type="text" name="codigo_postal" id="codigo-postal" class="form-control"
@@ -156,18 +103,26 @@
                         <label for="localidad"> Localidad</label>
                       </div>
                       <div class="form-floating col">
-                        <input type="text" name="provincia" id="provincia" class="form-control" placeholder="Provincia">
-                        <label for="provincia"> Provincia</label>
+                        <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Telefono">
+                        <label for="telefono"> Telefono</label>
                       </div>
                       <div class="row">
                         <div class="form-floating col-md-7">
-                          <input type="text" name="tipo" id="tipo" class="form-control" placeholder="Tipo">
-                          <label for="tipo"> Tipo</label>
+                          <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                          <label for="email"> Email</label>
                         </div>
-                        <div class="form-floating">
-                          <textarea name="observaciones" id="observaciones" class="form-control"
-                            placeholder="Observaciones"></textarea>
-                          <label for="observaciones"> Observaciones</label>
+                        <div class="form-floating col-md-7">
+                          <input type="number" name="cpostal" id="cpostal" class="form-control" placeholder="C. Postal">
+                          <label for="cpostal"> C. Postal</label>
+                        </div>
+                        <div class="form-floating col-md-7">
+                          <input type="date" name="fNacimiento" id="fNacimiento" class="form-control"
+                            placeholder="Fecha de Nacimiento">
+                          <label for="fNacimiento"> Fecha de Nacimiento</label>
+                        </div>
+                        <div class="form-floating col-md-7">
+                          <input type="date" name="fAlta" id="fAlta" class="form-control" placeholder="Fecha de Alta">
+                          <label for="fAlta"> Fecha de Alta</label>
                         </div>
                       </div>
                       <div class="input-group md3">
@@ -192,7 +147,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
     <script src="./modelos/clientes.js"></script>
-    <script src="./controladores/lista-clientes.js"></script>
+    <script src="./controladores/lista-clientes.js" type="module"></script>
 </body>
 
 </html>

@@ -35,7 +35,7 @@ const frmImagen = document.querySelector('#frmImagen');
 // Variables
 let buscar = '';
 let opcion = '';
-let id;
+let id; 
 let mensajeAlerta;
 
 let clientes = [];
@@ -103,21 +103,20 @@ function mostrarClientes() {
     listado.innerHTML = '';
     clientesFiltrados.map(cliente =>
     (listado.innerHTML += `
-    <div class="container text-center ">
-         <div class="row">
-          <div class="col-md-6">
+
+          <div class="col-md-6 text-center">
             <div class="card mb-3" style="max-width: 620px;">
               <div class="row g-0 ">
                 <div class="col-md-4">
-                  <img src="./imagenes/${cliente.imagen??'clinte-sin-imagen.png'}" class="img-fluid rounded-start" alt="...">
+                  <img src="./imagenes/${cliente.imagen??''}" class="img-fluid rounded-start" alt=".">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">${cliente.nombres} ${cliente.apellidoRsocial} - ${cliente.tipoPersona}</h5>
                     <p class="card-text"> <span name="span-domicilio"> ${cliente.domicilio}</span> - <span name="span-localidad"> ${cliente.localidad}</span> - <span name="span-cpostal"> ${cliente.cpostal}</span></p>
                     <p class="card-text"> <span name="span-tipoDni"> ${cliente.tipoDni}</span> - <span name="span-telefono"> ${cliente.telefono}</span> - <span name="span-email"> ${cliente.email}</span></p>
-                    <p class="card-text"> <span name="span-fNacimiento"> ${cliente.fNacimiento}</span> - <span name="span-fAlta"> ${cliente.fAlta}</span></p>
-                    <p class="card-text"><small class="text-body-secondary">Expedientes</small></p>
+                    <p class="card-text"> <span name="span-fNacimiento"> Fecha de Naci. ${cliente.fNacimiento}</span> - <span name="span-fAlta"> Fecha de alta ${cliente.fAlta}</span></p>
+                    <a href="./expedientes.html" class="stretched-link sin-subrrayado"><p class="card-text"><small class="text-body-secondary">Expedientes</small></p> </a>
                   </div>
                 </div>
               </div>

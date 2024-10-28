@@ -10,7 +10,7 @@
     padding: 20px;
     position: fixed;
     top: 25%;
-    left: 6.5%;
+    left: 15%;
     
 }
 
@@ -48,10 +48,13 @@
 }
 
 .logged-in {
-  display: none;
+  display: flex;
 }
   
 .h-100 {
   height: 100vh;
 }
 
+.sin-subrrayado {
+  text-decoration: none;
+}
