@@ -51,7 +51,7 @@
         <form id="formulario" enctype="multipart/form-data">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Propiedad</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Cliente</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -65,65 +65,82 @@
                     <label for="imagen" class="form-label">Seleccionar imagen</label>
                     <input type="file" name="imagen" id="imagen" class="form-control" />
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-12">
+
                     <div class="row">
-                      <div class="form-floating col-md-3">
+                      <div class="form-floating col-md-6">
                         <input type="text" name="tipoPersona" id="tipoPersona" class="form-control"
                           placeholder="Tipo de Persona">
                         <label for="tipoPersona"> Tipo de Persona</label>
                       </div>
-                      <div class="form-floating col-9">
+                      <div class="form-floating col-4">
                         <input type="text" name="tipoDni" id="tipoDni" class="form-control" placeholder="Tipo de DNI">
                         <label for="tipoDni"> Tipo de DNI</label>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-floating col-3">
+                      <div class="form-floating col-5">
                         <input type="text" name="apellidoRsocial" id="apellidoRsocial" class="form-control"
                           placeholder="Apellido o Razon Social">
                         <label for="apellidoRsocial"> Apellido o Razon Social</label>
                       </div>
-                      <div class="form-floating col-md-3">
+                      <div class="form-floating col-md-5">
                         <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombres">
                         <label for="nombres"> Nombres</label>
                       </div>
+                    </div>
+
+                      <div class="row">
                       <div class="form-floating col-md-3">
                         <input type="text" name="domicilio" id="domicilio" class="form-control" placeholder="Domicilio">
                         <label for="domicilio"> Domicilio</label>
                       </div>
                       <div class="form-floating col-md-3">
-                        <input type="text" name="codigo_postal" id="codigo-postal" class="form-control"
-                          placeholder="Codigo postal">
-                        <label for="codigo-postal"> Codigo P.</label>
+                        <input type="number" name="cpostal" id="cpostal" class="form-control" placeholder="C. Postal">
+                        <label for="cpostal"> C. Postal</label>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="form-floating col">
+                      <div class="form-floating col-md-3">
                         <input type="text" name="localidad" id="localidad" class="form-control" placeholder="Localidad">
                         <label for="localidad"> Localidad</label>
                       </div>
-                      <div class="form-floating col">
+                    </div>
+
+                    <div class="row">
+                      <div class="form-floating col-4">
                         <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Telefono">
                         <label for="telefono"> Telefono</label>
                       </div>
-                      <div class="row">
-                        <div class="form-floating col-md-7">
+                        <div class="form-floating col-8">
                           <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                           <label for="email"> Email</label>
                         </div>
-                        <div class="form-floating col-md-7">
-                          <input type="number" name="cpostal" id="cpostal" class="form-control" placeholder="C. Postal">
-                          <label for="cpostal"> C. Postal</label>
+                    </div>
+                      
+                    <div class="row">
+                        <div class="form-floating col-md-6">
+                          <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
+                          <label for="usuario"> Usuario</label>
                         </div>
-                        <div class="form-floating col-md-7">
+                        <div class="form-floating col-md-6">
+                          <input type="text" name="password" id="password" class="form-control" placeholder="Password">
+                          <label for="password"> Contraseña</label>
+                        </div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="form-floating col-md-4">
                           <input type="date" name="fNacimiento" id="fNacimiento" class="form-control"
                             placeholder="Fecha de Nacimiento">
                           <label for="fNacimiento"> Fecha de Nacimiento</label>
                         </div>
-                        <div class="form-floating col-md-7">
+                        <div class="form-floating col-md-4">
                           <input type="date" name="fAlta" id="fAlta" class="form-control" placeholder="Fecha de Alta">
                           <label for="fAlta"> Fecha de Alta</label>
                         </div>
+                        <div class="form-floating col-md-4">
+                          <input type="date" name="fBaja" id="fBaja" class="form-control" placeholder="Fecha de Baja">
+                          <label for="fBaja"> Fecha de Baja</label>
+                        </div>
+                      </div>
+
                       </div>
                       <div class="input-group md3">
                       </div>

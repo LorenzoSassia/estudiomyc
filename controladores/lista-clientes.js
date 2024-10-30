@@ -97,7 +97,7 @@ function filtrarPorTipoPersona(n) {
 
 
 /**
- * Muestra los artículos  *
+ * Muestra los clientes  *
  */
 function mostrarClientes() {
     listado.innerHTML = '';
@@ -127,7 +127,7 @@ function mostrarClientes() {
 }
 
 /**
- * Filtro de los artículos
+ * Filtro de los clientes
  */
 
 const botonesFiltros = document.querySelectorAll('#filtros button');
