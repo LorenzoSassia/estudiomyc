@@ -1,4 +1,4 @@
-import { seleccionarClientes, insertarClientes, actualizarClientes, eliminarClientes } from "../modelos/clientes.js";
+import { seleccionarExpedientes, insertarExpedientes, actualizarExpedientes, eliminarExpedientes } from "../modelos/expedientes.js";
 /* Objetos del DOM */
 
 // Listado de clientes
@@ -13,19 +13,15 @@ const formularioModal = new bootstrap.Modal(document.querySelector('#formularioM
 const btnNuevo = document.querySelector('#btnNuevo');
 
 // Inputs
-const inputTipoPersona = document.querySelector('#tipoPersona');//
-const inputTipoDni = document.querySelector('#tipoDni');//
-const inputApellidoRsocial = document.querySelector('#apellidoRsocial');//
-const inputNombres = document.querySelector('#nombres');//
-const inputDomicilio = document.querySelector('#domicilio');//
-const inputTelefono = document.querySelector('#telefono');//
-const inputEmail = document.querySelector('#email');//
-const inputUsuario = document.querySelector('#usuario');
-const inputPassword = document.querySelector('#password');
-const inputLocalidad = document.querySelector('#localidad');//
-const inputCpostal = document.querySelector('#cpostal');//
-const inputFNacimiento = document.querySelector('#fNacimiento');//
-const inputFAlta = document.querySelector('#fAlta');//
+const inputTipoExpediente = document.querySelector('#tipoExpediente');//
+const inputNroExpediente = document.querySelector('#nroExpediente');//
+const inputJuzgado = document.querySelector('#juzgado');//
+const inputCaratura = document.querySelector('#caratura');//
+const inputTipoJuicio = document.querySelector('#tipoJuicio');//
+const inputACargoDe = document.querySelector('#aCargoDe');//
+const inputEstado = document.querySelector('#estado');//
+const inputFInicio = document.querySelector('#fInicio');
+const inputFFin = document.querySelector('#fFin');
 const inputFBaja = document.querySelector('#fBaja');
 
 
@@ -38,9 +34,9 @@ let opcion = '';
 let id;
 let mensajeAlerta;
 
-let clientes = [];
-let clientesFiltrados = [];
-let cliente = {};
+let expedientes = [];
+let expedientesFiltrados = [];
+let expediente = {};
 
 // Control de usuario
 let usuario = '';
@@ -54,9 +50,9 @@ let logueado = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
     controlUsuario();
-    clientes = await obtenerClientes();
-    clientesFiltrados = filtrarPorTipoPersona('');
-    mostrarClientes();
+    expedientes = await obtenerExpedientes();
+    expedientesFiltrados = filtrarPorTipoExpediente('');
+    mostrarExpedientes();
 });
 
 /**
@@ -77,51 +73,52 @@ const controlUsuario = () => {
 };
 
 /**
- * Obtiene los clientes
+ * Obtiene los expedientes
  */
-async function obtenerClientes() {
-    clientes = await seleccionarClientes();
-    return clientes;
+async function obtenerExpedientes() {
+    expedientes = await seleccionarExpedientes();
+    return expedientes;
 }
 
 /**
- * Filtra los clientes por tipo de persona
- * @param n el tipo de persona
- * @return clientes filtrados
+ * Filtra los expedientes por tipo de Expediente
+ * @param n el tipo de Expediente
+ * @return expedientes filtrados
  */
 
-function filtrarPorTipoPersona(n) {
-    clientesFiltrados = clientes.filter(items => items.tipoPersona.includes(n));
-    return clientesFiltrados;
+function filtrarPorTipoExpediente(n) {
+    expedientesFiltrados = expedientes.filter(items => items.tipoExpediente.includes(n));
+    return expedientesFiltrados;
 }
 
 
 /**
- * Muestra los clientes  *
+ * Muestra los expedientes  *
  */
-function mostrarClientes() {
+function mostrarExpedientes() {
     listado.innerHTML = '';
-    clientesFiltrados.map(cliente =>
+    expedientesFiltrados.map(expediente =>
     (listado.innerHTML += `
 
           <div class="col-md-6 text-center">
             <div class="card mb-3" style="max-width: 620px;">
               <div class="row g-0 ">
                 <div class="col-md-4">
-                  <img src="./imagenes/${cliente.imagen ?? ''}" class="img-fluid rounded-start" alt=".">
+                  <img src="./imagenes/${expediente.imagen ?? ''}" class="img-fluid rounded-start" alt=".">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">${cliente.nombres} ${cliente.apellidoRsocial} - ${cliente.tipoPersona}</h5>
-                    <p class="card-text"> <span name="span-domicilio"> ${cliente.domicilio}</span> - <span name="span-localidad"> ${cliente.localidad}</span> - <span name="span-cpostal"> ${cliente.cpostal}</span></p>
-                    <p class="card-text"> <span name="span-tipoDni"> ${cliente.tipoDni}</span> - <span name="span-telefono"> ${cliente.telefono}</span> - <span name="span-email"> ${cliente.email}</span></p>
-                    <p class="card-text"> <span name="span-fNacimiento"> Fecha de Naci. ${cliente.fNacimiento}</span> - <span name="span-fAlta"> Fecha de alta ${cliente.fAlta}</span></p>
+                    <h5 class="card-title">${expediente.tipoExpediente} - ${expediente.nroExpediente} </h5>
+                    <p class="card-text"> <span name="span-juzgado"> Nro. Juzgado: ${expediente.juzgado}</span> - <span name="span-tipoJuicio">Tipo: ${expediente.tipoJuicio}</span></p>
+                    <p class="card-text"> <span name="span-caratura"> ${expediente.caratura}</span> </p>
+                    <p class="card-text"> <span name="span-aCargoDe"> ${expediente.aCargoDe}</span> - <span name="span-estado"> ${expediente.estado}</span> </p>
+                    <p class="card-text"> <span name="span-fInicio">Fecha de Inicio: ${expediente.fInicio}</span> - <span name="span-fFin">Fecha de Fin: ${expediente.fFin}</span></p>
                     
                   </div>
                    <div class="card-footer">
                             <a class="btn-editar btn btn-primary">Editar</a>
                             <a class="btn-borrar btn btn-danger">Borrar</a> 
-                            <input type="hidden" class="id-cliente" value="${cliente.id}">
+                            <input type="hidden" class="id-cliente" value="${expediente.id}">
                     </div>
                 </div>
               </div>
@@ -132,7 +129,7 @@ function mostrarClientes() {
 }
 
 /**
- * Filtro de los clientes
+ * Filtro de los Expedientes
  */
 
 const botonesFiltros = document.querySelectorAll('#filtros button');
@@ -152,8 +149,8 @@ botonesFiltros.forEach(boton => {
         if (buscar == 'Todos') {
             buscar = '';
         }
-        filtrarPorTipoPersona(buscar);
-        mostrarClientes();
+        filtrarPorTipoExpediente(buscar);
+        mostrarExpedientes();
     })
 })
 
@@ -163,19 +160,15 @@ botonesFiltros.forEach(boton => {
  */
 btnNuevo.addEventListener('click', () => {
     // Limpiamos los inputs
-    inputTipoPersona.value = null;
-    inputTipoDni.value = null;
-    inputApellidoRsocial.value = null;
-    inputNombres.value = null;
-    inputDomicilio.value = null;
-    inputTelefono.value = null;
-    inputEmail.value = null;
-    inputUsuario.value = null;
-    inputPassword.value = null;
-    inputLocalidad.value = null;
-    inputCpostal.value = null;
-    inputFNacimiento.value = null;
-    inputFAlta.value = null;
+    inputTipoExpediente.value = null;
+    inputNroExpediente.value = null;
+    inputJuzgado.value = null;
+    inputCaratura.value = null;
+    inputTipoJuicio.value = null;
+    inputACargoDe.value = null;
+    inputEstado.value = null;
+    inputFInicio.value = null;
+    inputFFin.value = null;
     inputFBaja.value = null;
     frmImagen.src = './imagenes/cliente-sin-imagen.png';
 
@@ -196,15 +189,15 @@ formulario.addEventListener('submit', (e) => {
     switch (opcion) {
         case 'insertar':
             mensajeAlerta = 'Datos guardados';
-            insertarClientes(datos);
+            insertarExpedientes(datos);
             break;
         case 'actualizar':
             mensajeAlerta = 'Datos acualizados';
-            actualizarClientes(datos, id);
+            actualizarExpedientes(datos, id);
             break;
     }
     insertarAlerta(mensajeAlerta, 'success');
-    mostrarClientes();
+    mostrarExpedientes();
 })
 
 /**
@@ -244,10 +237,10 @@ const on = (elemento, evento, selector, manejador) => {
 on(document, 'click', '.btn-editar', e => {
     const cardFooter = e.target.parentNode; // Guardamos el elemento padre del botón
 
-    // Guardar los valores del card del cliente
-    id = cardFooter.querySelector('.id-cliente').value;
-    cliente = clientes.find(item => item.id == id);
-    console.log(cliente);
+    // Guardar los valores del card del expediente
+    id = cardFooter.querySelector('.id-expediente').value;
+    expediente = expedientes.find(item => item.id == id);
+    console.log(expediente);
 
     /*
     const codigo = cardFooter.parentNode.querySelector('span[name=spancodigo]').innerHTML;
@@ -258,21 +251,17 @@ on(document, 'click', '.btn-editar', e => {
     */
 
     // Asignamos los valores a los input del formulario
-    inputTipoPersona.value = cliente.tipoPersona;
-    inputTipoDni.value = cliente.tipoDni;
-    inputApellidoRsocial.value = cliente.apellidoRsocial;
-    inputNombres.value = cliente.nombres;
-    inputDomicilio.value = cliente.domicilio;
-    inputTelefono.value = cliente.telefono;
-    inputEmail.value = cliente.email;
-    inputUsuario.value = cliente.usuario;
-    inputPassword.value = cliente.password;
-    inputLocalidad.value = cliente.localidad;
-    inputCpostal.value = cliente.cpostal;
-    inputFNacimiento.value = cliente.fNacimiento;
-    inputFAlta.value = cliente.fAlta;
-    inputFBaja.value = cliente.fBaja;
-    frmImagen.src = `./imagenes/productos/${cliente.imagen}`;
+    inputTipoExpediente.value = expediente.tipoExpediente;
+    inputNroExpediente.value = expediente.nroExpediente;
+    inputJuzgado.value = expediente.juzgado;
+    inputCaratura.value = expediente.caratura;
+    inputTipoJuicio.value = expediente.tipoJuicio;
+    inputACargoDe.value  = expediente.aCargoDe;
+    inputEstado.value = expediente.estado;
+    inputFInicio.value = expediente.fInicio;
+    inputFFin.value = expediente.fFin;
+    inputFBaja.value = expediente.fBaja;
+    frmImagen.src = `./imagenes/productos/${expediente.imagen}`;
 
     // Mostramos el formulario
     formularioModal.show();
@@ -285,17 +274,17 @@ on(document, 'click', '.btn-editar', e => {
  */
 on(document, 'click', '.btn-borrar', e => {
     const cardFooter = e.target.parentNode;
-    id = cardFooter.querySelector('.id-cliente').value;
-    cliente = clientes.find(item => item.id == id);
+    id = cardFooter.querySelector('.id-expediente').value;
+    expediente = expedientes.find(item => item.id == id);
 
     /*
     const nombre = cardFooter.parentNode.querySelector('span[name=spannombre]').innerHTML;
     */
 
-    let aceptar = confirm(`¿Relamente desea eliminar a ${cliente.nombres}?`);
+    let aceptar = confirm(`¿Relamente desea eliminar a ${expediente.nroExpediente}?`);
     if (aceptar) {
-        eliminarClientes(id);
-        insertarAlerta(`${cliente.nombres} borrado`, 'danger');
-        mostrarClientes();
+        eliminarExpedientes(id);
+        insertarAlerta(`${expediente.nroExpediente} borrado`, 'danger');
+        mostrarExpedientes();
     }
 })
