@@ -1,4 +1,4 @@
-import { seleccionarExpedientes, insertarExpedientes, actualizarExpedientes, eliminarExpedientes } from "../modelos/expedientes.js";
+import { seleccionarJuzgados, insertarJuzgados, actualizarJuzgados, eliminarJuzgados } from "../modelos/juzgados.js";
 /* Objetos del DOM */
 
 // Listado de clientes
@@ -13,17 +13,11 @@ const formularioModal = new bootstrap.Modal(document.querySelector('#formularioM
 const btnNuevo = document.querySelector('#btnNuevo');
 
 // Inputs
-const inputTipoExpediente = document.querySelector('#tipoExpediente');//
-const inputNroExpediente = document.querySelector('#nroExpediente');//
-const inputJuzgado = document.querySelector('#juzgado');//
-const inputCaratura = document.querySelector('#caratura');//
-const inputTipoJuicio = document.querySelector('#tipoJuicio');//
-const inputACargoDe = document.querySelector('#aCargoDe');//
-const inputEstado = document.querySelector('#estado');//
-const inputFInicio = document.querySelector('#fInicio');
-const inputFFin = document.querySelector('#fFin');
-const inputFBaja = document.querySelector('#fBaja');
-
+const inputNroJuzgado = document.querySelector('#nroJuzgado');//
+const inputNombreJuzgado = document.querySelector('#nombreJuzgado');//
+const inputJuezTram = document.querySelector('#juezTram');//
+const inputSecretario = document.querySelector('#secretario');//
+const inputTelefono = document.querySelector('#telefono');//
 
 // Imagen del formulario
 const frmImagen = document.querySelector('#frmImagen');
@@ -34,9 +28,9 @@ let opcion = '';
 let id;
 let mensajeAlerta;
 
-let expedientes = [];
-let expedientesFiltrados = [];
-let expediente = {};
+let juzgados = [];
+let juzgadosFiltrados = [];
+let juzgado = {};
 
 // Control de usuario
 let usuario = '';
@@ -50,9 +44,9 @@ let logueado = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
     controlUsuario();
-    expedientes = await obtenerExpedientes();
-    expedientesFiltrados = filtrarPorTipoExpediente('');
-    mostrarExpedientes();
+    juzgados = await obtenerJuzgados();
+    juzgadosFiltrados = filtrarPorSecretario('');
+    mostrarJuzgados();
 });
 
 /**
@@ -73,31 +67,31 @@ const controlUsuario = () => {
 };
 
 /**
- * Obtiene los expedientes
+ * Obtiene los Juzgados
  */
-async function obtenerExpedientes() {
-    expedientes = await seleccionarExpedientes();
-    return expedientes;
+async function obtenerJuzgados() {
+    juzgados = await seleccionarJuzgados();
+    return juzgados;
 }
 
 /**
- * Filtra los expedientes por tipo de Expediente
+ * Filtra los juzgados por tipo de Expediente
  * @param n el tipo de Expediente
- * @return expedientes filtrados
+ * @return juzgados filtrados
  */
 
-function filtrarPorTipoExpediente(n) {
-    expedientesFiltrados = expedientes.filter(items => items.tipoExpediente.includes(n));
-    return expedientesFiltrados;
+function filtrarPorSecretario(n) {
+    juzgadosFiltrados = juzgados.filter(items => items.secretario.includes(n));
+    return juzgadosFiltrados;
 }
 
 
 /**
- * Muestra los expedientes  *
+ * Muestra los juzgados  *
  */
-function mostrarExpedientes() {
+function mostrarJuzgados() {
     listado.innerHTML = '';
-    expedientesFiltrados.map(expediente =>
+    juzgadosFiltrados.map(juzgado =>
     (listado.innerHTML += `
 
           <div class="col-md-6 text-center">
@@ -108,17 +102,15 @@ function mostrarExpedientes() {
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">${expediente.tipoExpediente} - ${expediente.nroExpediente} </h5>
-                    <p class="card-text"> <span name="span-juzgado"> Nro. Juzgado: ${expediente.juzgado}</span> - <span name="span-tipoJuicio">Tipo: ${expediente.tipoJuicio}</span></p>
-                    <p class="card-text"> <span name="span-caratura"> ${expediente.caratura}</span> </p>
-                    <p class="card-text"> <span name="span-aCargoDe"> ${expediente.aCargoDe}</span> - <span name="span-estado"> ${expediente.estado}</span> </p>
-                    <p class="card-text"> <span name="span-fInicio">Fecha de Inicio: ${expediente.fInicio}</span> - <span name="span-fFin">Fecha de Fin: ${expediente.fFin}</span></p>
+                    <h5 class="card-title">${juzgado.nroJuzgado} - ${juzgado.nombreJuzgado} </h5>
+                    <p class="card-text"> <span name="span-juzgado"> Juez Tram. : ${juzgado.juezTram}</span> - <span name="span-tipoJuicio">Secretario: ${juzgado.secretario}</span></p>
+                    <p class="card-text"> <span name="span-caratura"> ${juzgado.telefono}</span> </p>
                     
                   </div>
                    <div class="card-footer">
                             <a class="btn-editar btn btn-primary">Editar</a>
                             <a class="btn-borrar btn btn-danger">Borrar</a> 
-                            <input type="hidden" class="id-expediente" value="${expediente.id}">
+                            <input type="hidden" class="id-juzgado" value="${juzgado.id}">
                     </div>
                 </div>
               </div>
@@ -129,7 +121,7 @@ function mostrarExpedientes() {
 }
 
 /**
- * Filtro de los Expedientes
+ * Filtro de los Juzgados
  */
 
 const botonesFiltros = document.querySelectorAll('#filtros button');
@@ -149,8 +141,8 @@ botonesFiltros.forEach(boton => {
         if (buscar == 'Todos') {
             buscar = '';
         }
-        filtrarPorTipoExpediente(buscar);
-        mostrarExpedientes();
+        filtrarPorSecretario(buscar);
+        mostrarJuzgados();
     })
 })
 
@@ -160,16 +152,11 @@ botonesFiltros.forEach(boton => {
  */
 btnNuevo.addEventListener('click', () => {
     // Limpiamos los inputs
-    inputTipoExpediente.value = null;
-    inputNroExpediente.value = null;
-    inputJuzgado.value = null;
-    inputCaratura.value = null;
-    inputTipoJuicio.value = null;
-    inputACargoDe.value = null;
-    inputEstado.value = null;
-    inputFInicio.value = null;
-    inputFFin.value = null;
-    inputFBaja.value = null;
+    inputNroJuzgado.value = null;
+    inputNombreJuzgado.value = null;
+    inputJuezTram.value = null;
+    inputSecretario.value = null;
+    inputTelefono.value = null;
     frmImagen.src = './imagenes/cliente-sin-imagen.png';
 
     // Mostrar el formulario modal
@@ -189,15 +176,15 @@ formulario.addEventListener('submit', (e) => {
     switch (opcion) {
         case 'insertar':
             mensajeAlerta = 'Datos guardados';
-            insertarExpedientes(datos);
+            insertarJuzgados(datos);
             break;
         case 'actualizar':
             mensajeAlerta = 'Datos acualizados';
-            actualizarExpedientes(datos, id);
+            actualizarJuzgados(datos, id);
             break;
     }
     insertarAlerta(mensajeAlerta, 'success');
-    mostrarExpedientes();
+    mostrarJuzgados();
 })
 
 /**
@@ -237,10 +224,10 @@ const on = (elemento, evento, selector, manejador) => {
 on(document, 'click', '.btn-editar', e => {
     const cardFooter = e.target.parentNode; // Guardamos el elemento padre del botón
 
-    // Guardar los valores del card del expediente
-    id = cardFooter.querySelector('.id-expediente').value;
-    expediente = expedientes.find(item => item.id == id);
-    console.log(expediente);
+    // Guardar los valores del card del juzgado
+    id = cardFooter.querySelector('.id-juzgado').value;
+    juzgado = juzgados.find(item => item.id == id);
+    console.log(juzgado);
 
     /*
     const codigo = cardFooter.parentNode.querySelector('span[name=spancodigo]').innerHTML;
@@ -251,17 +238,12 @@ on(document, 'click', '.btn-editar', e => {
     */
 
     // Asignamos los valores a los input del formulario
-    inputTipoExpediente.value = expediente.tipoExpediente;
-    inputNroExpediente.value = expediente.nroExpediente;
-    inputJuzgado.value = expediente.juzgado;
-    inputCaratura.value = expediente.caratura;
-    inputTipoJuicio.value = expediente.tipoJuicio;
-    inputACargoDe.value  = expediente.aCargoDe;
-    inputEstado.value = expediente.estado;
-    inputFInicio.value = expediente.fInicio;
-    inputFFin.value = expediente.fFin;
-    inputFBaja.value = expediente.fBaja;
-    frmImagen.src = `./imagenes/productos/${expediente.imagen}`;
+    inputNroJuzgado.value = juzgado.nroJuzgado;
+    inputNombreJuzgado.value = juzgado.nombreJuzgado;
+    inputJuezTram.value = juzgado.juezTram;
+    inputSecretario.value = juzgado.secretario;
+    inputTelefono.value = juzgado.telefono;
+    frmImagen.src = `./imagenes/productos/${juzgado.imagen}`;
 
     // Mostramos el formulario
     formularioModal.show();
@@ -274,17 +256,17 @@ on(document, 'click', '.btn-editar', e => {
  */
 on(document, 'click', '.btn-borrar', e => {
     const cardFooter = e.target.parentNode;
-    id = cardFooter.querySelector('.id-expediente').value;
-    expediente = expedientes.find(item => item.id == id);
+    id = cardFooter.querySelector('.id-juzgado').value;
+    juzgado = juzgados.find(item => item.id == id);
 
     /*
     const nombre = cardFooter.parentNode.querySelector('span[name=spannombre]').innerHTML;
     */
 
-    let aceptar = confirm(`¿Relamente desea eliminar a ${expediente.nroExpediente}?`);
+    let aceptar = confirm(`¿Relamente desea eliminar a ${juzgado.nroJuzgado}?`);
     if (aceptar) {
-        eliminarExpedientes(id);
-        insertarAlerta(`${expediente.nroExpediente} borrado`, 'danger');
-        mostrarExpedientes();
+        eliminarJuzgados(id);
+        insertarAlerta(`${juzgado.nroJuzgado} borrado`, 'danger');
+        mostrarJuzgados();
     }
 })

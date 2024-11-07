@@ -22,11 +22,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active logged-in" aria-current="page" href="./clientes.html" id="login-cliente">Clientes</a>
-        </li>
+            <a class="nav-link active logged-in" aria-current="page" href="./clientes.html"
+              id="login-cliente">Clientes</a>
+          </li>
           <li class="nav-item">
-            <a class="nav-link active logged-in" aria-current="page" href="./juzgado.html" id="login-cliente">Juzgados</a>
-        </li>
+            <a class="nav-link active logged-in" aria-current="page" href="./expedientes.html"
+              id="login-cliente">Expedientes</a>
+          </li>
 
 
 
@@ -36,19 +38,19 @@
   </nav>
 
   <header class="color-blanco">
-    Lista de Expedientes
+    Lista de Juzgados
   </header>
 
   <div id="alerta"></div>
   <main class="container">
     <!-- Botón que inicia el Modal -->
-    <button type="button" class="btn btn-light logged-in" data-bs-toggle="modal" id="btnNuevo" >
-      Nuevo Expediente
+    <button type="button" class="btn btn-light logged-in" data-bs-toggle="modal" id="btnNuevo">
+      Nuevo Juzgado
     </button>
     <section>
       <div class="row" id="listado"></div>
     </section>
-    
+
 
     <!-- Modal -->
 
@@ -57,7 +59,7 @@
         <form id="formulario" enctype="multipart/form-data">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Expediente</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Juzgado</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -75,60 +77,33 @@
 
                     <div class="row">
                       <div class="form-floating col-md-6">
-                        <input type="text" name="tipoExpediente" id="tipoExpediente" class="form-control" placeholder="Tipo de Expediente">
-                        <label for="tipoExpediente"> Tipo de Expediente</label>
+                        <input type="text" name="nroJuzgado" id="nroJuzgado" class="form-control"
+                          placeholder="Numero Juzgado">
+                        <label for="nroJuzgado"> Numero juzgado</label>
                       </div>
                       <div class="form-floating col-4">
-                        <input type="text" name="nroExpediente" id="nroExpediente" class="form-control" placeholder="Numero de Expediente">
-                        <label for="nroExpediente"> Numero de Expediente</label>
+                        <input type="text" name="nombreJuzgado" id="nombreJuzgado" class="form-control"
+                          placeholder="Nombre de Juzgado">
+                        <label for="nombreJuzgado"> Nombre de Juzgado</label>
                       </div>
                       <div class="form-floating col-5">
-                        <input type="text" name="juzgado" id="juzgado" class="form-control"
-                          placeholder="Juzgado">
-                        <label for="juzgado"> Juzgado</label>
+                        <input type="text" name="juezTram" id="juezTram" class="form-control"
+                          placeholder="Juez Tram">
+                        <label for="juezTram"> Juez Tram</label>
                       </div>
 
                       <div class="row">
-                      <div class="form-floating col-md-3">
-                        <textarea type="text" name="caratura" id="caratura" class="form-control" placeholder="Caratura"></textarea>
-                        <label for="caratura"> Caratura</label>
-                      </div>
-                      <div class="form-floating col-md-3">
-                        <input type="text" name="tipoJuicio" id="tipoJuicio" class="form-control" placeholder="Tipo de Juicio">
-                        <label for="tipoJuicio"> Tipo de Juicio</label>
-                      </div>
-                      <div class="form-floating col-md-3">
-                        <input type="text" name="aCargoDe" id="aCargoDe" class="form-control" placeholder="A Cargo de">
-                        <label for="aCargoDe"> A Cargo de</label>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="form-floating col-4">
-                        <input type="text" name="estado" id="estado" class="form-control" placeholder="Estado">
-                        <label for="estado"> Estado</label>
+                        <div class="form-floating col-md-3">
+                          <input type="text" name="secretario" id="secretario" class="form-control"
+                            placeholder="Secretario">
+                          <label for="secretario"> Secretario</label>
+                        </div>
+                        <div class="form-floating col-md-3">
+                          <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono">
+                          <label for="telefono"> Telefono</label>
+                        </div>
                       </div>
                  
-                                           
-                    <div class="row">
-                        <div class="form-floating col-md-4">
-                          <input type="date" name="fInicio" id="fInicio" class="form-control"
-                            placeholder="Fecha de Inicio">
-                          <label for="fInicio"> Fecha de Inicio</label>
-                        </div>
-                        <div class="form-floating col-md-4">
-                          <input type="date" name="fFin" id="fFin" class="form-control" placeholder="Fecha de Fin">
-                          <label for="fFin"> Fecha de Fin</label>
-                        </div>
-                        <div class="form-floating col-md-4">
-                          <input type="date" name="fBaja" id="fBaja" class="form-control" placeholder="Fecha de Baja">
-                          <label for="fBaja"> Fecha de Baja</label>
-                        </div>
-                      </div>
-
-                      </div>
-                      <div class="input-group md3">
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -148,8 +123,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
-    <script src="./modelos/expedientes.js"></script>
-    <script src="./controladores/lista-expedientes.js" type="module"></script>
+    <script src="./modelos/juzgados.js"></script>
+    <script src="./controladores/lista-juzgado.js" type="module"></script>
 </body>
 
 </html>
