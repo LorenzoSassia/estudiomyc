@@ -65,6 +65,7 @@ const verificar = () => {
     if(logueado) {
         divLogin.style.display = 'none';
         divLogout.style.display = 'inline';
+        
     } else {
         divLogin.style.display = 'inline';
         divLogout.style.display = 'none';

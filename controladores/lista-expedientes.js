@@ -115,7 +115,7 @@ function mostrarExpedientes() {
                     <p class="card-text"> <span name="span-fInicio">Fecha de Inicio: ${expediente.fInicio}</span> - <span name="span-fFin">Fecha de Fin: ${expediente.fFin}</span></p>
                     
                   </div>
-                   <div class="card-footer">
+                   <div class="card-footer ${logueado?'d-flex':'d-none'}">
                             <a class="btn-editar btn btn-primary">Editar</a>
                             <a class="btn-borrar btn btn-danger">Borrar</a> 
                             <input type="hidden" class="id-expediente" value="${expediente.id}">

@@ -21,55 +21,58 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active logged-in" aria-current="page" href="./clientes.html" id="login-cliente">Clientes</a>
+                        <a class="nav-link active logged-in" aria-current="page" href="./clientes.html"
+                            id="login-cliente">Clientes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active logged-in" aria-current="page"
                             href="./expedientes.html">Expedientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active logged-in" aria-current="page"
-                            href="./juzgado.html">Juzgados</a>
+                        <a class="nav-link active logged-in" aria-current="page" href="./juzgado.html">Juzgados</a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
-
-    <div>
         <div id="nav-login">
             <div id="div-login">
-                
-                <div class="container-sm container-estilo ">
-
-                </div>
+                <form class="d-flex" id="form-login">
+                    <input class="form-control me-2 " id="usuario" name="usuario" type="text" placeholder="Usuario"
+                        aria-label="Usuario">
+                    <input class="form-control me-2 " id="password" name="password" type="password"
+                        placeholder="Contraseña" aria-label="Contraseña">
+                    <button class="btn btn-outline-success " type="submit">Login</button>
+                </form>
             </div>
             <div id="div-logout" style="display: none;">
                 <span id="texto-logueado" class="text-white"></span>
                 <button id="btn-logout" class="btn btn-outline-primary">
-                    Cerrar sesión
+                    Cerrar sesion
                 </button>
             </div>
         </div>
+    </nav>
 
-        <div>
-            <img class="img-fluid imagen-fondo" src="./imagenes/imagen-fondo1.jpg" alt="">
-            <div class="container-sm container-estilo">
-                <form id="form-login">
-                    <div class="input-estilo ">
-                        <div class="mb-3 ">
-                            <label class="form-label ">Usuario </label>
-                            <input type="text" class="form-control" name="usuario" id="usuario">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label ">Contraseña</label>
-                            <input type="password" class="form-control" name="password" id="password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
+
+
+    <div>
+        <img class="img-fluid imagen-fondo" src="./imagenes/imagen-fondo1.jpg" alt="">
+        <div class="container-sm container-estilo">
+            <form id="form-login">
+                <div class="input-estilo ">
+                    <div class="mb-3 ">
+                        <label class="form-label ">Usuario </label>
+                        <input type="text" class="form-control" name="usuario" id="usuario">
                     </div>
-                </form>
-            </div>
+                    <div class="mb-3">
+                        <label class="form-label ">Contraseña</label>
+                        <input type="password" class="form-control" name="password" id="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </div>
+            </form>
         </div>
+    </div>
     </div>
 
 
@@ -79,7 +82,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="./controladores/login.js"></script>
-    <script src="./controladores/index.js"></script>
+    
 </body>
 
 </html>

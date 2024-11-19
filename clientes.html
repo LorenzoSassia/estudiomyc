@@ -30,7 +30,28 @@
         </ul>
       </div>
     </div>
+    <div id="nav-login">
+      <div id="div-login">
+        <form class="d-flex" id="form-login">
+          <input class="form-control me-2" type="text" name="usuario" id="usuario" placeholder="Usuario"
+            aria-label="Usuario" />
+          <input class="form-control me-2" type="password" name="password" id="password" placeholder="Contraseña"
+            aria-label="Contraseña" />
+          <button class="btn btn-outline-success" type="submit">
+            Login
+          </button>
+        </form>
+      </div>
+      <div id="div-logout" style="display: none;">
+        <span id="texto-logueado" class="text-white"></span>
+        <button id="btn-logout" class="btn btn-outline-primary">
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
   </nav>
+
+
 
   <header class="color-blanco">
     Lista de clientes
@@ -39,13 +60,13 @@
   <div id="alerta"></div>
   <main class="container">
     <!-- Botón que inicia el Modal -->
-    <button type="button" class="btn btn-light logged-in" data-bs-toggle="modal" id="btnNuevo" >
+    <button type="button" class="btn btn-light logged-in" data-bs-toggle="modal" id="btnNuevo">
       Nuevo Cliente
     </button>
     <section>
       <div class="row" id="listado"></div>
     </section>
-    
+
 
     <!-- Modal -->
 
@@ -91,7 +112,7 @@
                       </div>
                     </div>
 
-                      <div class="row">
+                    <div class="row">
                       <div class="form-floating col-md-3">
                         <input type="text" name="domicilio" id="domicilio" class="form-control" placeholder="Domicilio">
                         <label for="domicilio"> Domicilio</label>
@@ -111,54 +132,54 @@
                         <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Telefono">
                         <label for="telefono"> Telefono</label>
                       </div>
-                        <div class="form-floating col-8">
-                          <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                          <label for="email"> Email</label>
-                        </div>
-                    </div>
-                      
-                    <div class="row">
-                        <div class="form-floating col-md-6">
-                          <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
-                          <label for="usuario"> Usuario</label>
-                        </div>
-                        <div class="form-floating col-md-6">
-                          <input type="text" name="password" id="password" class="form-control" placeholder="Password">
-                          <label for="password"> Contraseña</label>
-                        </div>
-                    </div>
-                        
-                    <div class="row">
-                        <div class="form-floating col-md-4">
-                          <input type="date" name="fNacimiento" id="fNacimiento" class="form-control"
-                            placeholder="Fecha de Nacimiento">
-                          <label for="fNacimiento"> Fecha de Nacimiento</label>
-                        </div>
-                        <div class="form-floating col-md-4">
-                          <input type="date" name="fAlta" id="fAlta" class="form-control" placeholder="Fecha de Alta">
-                          <label for="fAlta"> Fecha de Alta</label>
-                        </div>
-                        <div class="form-floating col-md-4">
-                          <input type="date" name="fBaja" id="fBaja" class="form-control" placeholder="Fecha de Baja">
-                          <label for="fBaja"> Fecha de Baja</label>
-                        </div>
+                      <div class="form-floating col-8">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                        <label for="email"> Email</label>
                       </div>
+                    </div>
 
+                    <div class="row">
+                      <div class="form-floating col-md-6">
+                        <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
+                        <label for="usuario"> Usuario</label>
                       </div>
-                      <div class="input-group md3">
+                      <div class="form-floating col-md-6">
+                        <input type="text" name="password" id="password" class="form-control" placeholder="Password">
+                        <label for="password"> Contraseña</label>
                       </div>
                     </div>
+
+                    <div class="row">
+                      <div class="form-floating col-md-4">
+                        <input type="date" name="fNacimiento" id="fNacimiento" class="form-control"
+                          placeholder="Fecha de Nacimiento">
+                        <label for="fNacimiento"> Fecha de Nacimiento</label>
+                      </div>
+                      <div class="form-floating col-md-4">
+                        <input type="date" name="fAlta" id="fAlta" class="form-control" placeholder="Fecha de Alta">
+                        <label for="fAlta"> Fecha de Alta</label>
+                      </div>
+                      <div class="form-floating col-md-4">
+                        <input type="date" name="fBaja" id="fBaja" class="form-control" placeholder="Fecha de Baja">
+                        <label for="fBaja"> Fecha de Baja</label>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="input-group md3">
                   </div>
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar Cambios</button>
-            </div>
           </div>
-        </form>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar Cambios</button>
+      </div>
+    </div>
+    </form>
+    </div>
     </div>
 
 
@@ -168,6 +189,7 @@
       crossorigin="anonymous"></script>
     <script src="./modelos/clientes.js"></script>
     <script src="./controladores/lista-clientes.js" type="module"></script>
+    <script src="./controladores/login.js"></script>
 </body>
 
 </html>

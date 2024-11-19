@@ -107,7 +107,7 @@ function mostrarJuzgados() {
                     <p class="card-text"> <span name="span-caratura"> ${juzgado.telefono}</span> </p>
                     
                   </div>
-                   <div class="card-footer">
+                   <div class="card-footer ${logueado?'d-flex':'d-none'}">
                             <a class="btn-editar btn btn-primary">Editar</a>
                             <a class="btn-borrar btn btn-danger">Borrar</a> 
                             <input type="hidden" class="id-juzgado" value="${juzgado.id}">

@@ -118,7 +118,7 @@ function mostrarClientes() {
                     <p class="card-text"> <span name="span-fNacimiento"> Fecha de Naci. ${cliente.fNacimiento}</span> - <span name="span-fAlta"> Fecha de alta ${cliente.fAlta}</span></p>
                     
                   </div>
-                   <div class="card-footer">
+                   <div class="card-footer ${logueado?'d-flex':'d-none'}">
                             <a class="btn-editar btn btn-primary">Editar</a>
                             <a class="btn-borrar btn btn-danger">Borrar</a> 
                             <input type="hidden" class="id-cliente" value="${cliente.id}">

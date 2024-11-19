@@ -35,6 +35,23 @@
         </ul>
       </div>
     </div>
+    <div id="nav-login">
+      <div id="div-login">
+          <form class="d-flex" id="form-login">
+              <input class="form-control me-2 " id="usuario" name="usuario" type="text" placeholder="Usuario"
+                  aria-label="Usuario">
+              <input class="form-control me-2 " id="password" name="password" type="password"
+                  placeholder="Contraseña" aria-label="Contraseña">
+              <button class="btn btn-outline-success " type="submit">Login</button>
+          </form>
+      </div>
+      <div id="div-logout" style="display: none;">
+          <span id="texto-logueado" class="text-white"></span>
+          <button id="btn-logout" class="btn btn-outline-primary">
+              Cerrar sesion
+          </button>
+      </div>
+  </div>
   </nav>
 
   <header class="color-blanco">
@@ -125,6 +142,7 @@
       crossorigin="anonymous"></script>
     <script src="./modelos/juzgados.js"></script>
     <script src="./controladores/lista-juzgado.js" type="module"></script>
+    <script src="./controladores/login.js"></script>
 </body>
 
 </html>
