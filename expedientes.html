@@ -91,19 +91,11 @@
                   <div class="col-md-12">
 
                     <div class="row">
-                      <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
-                        <select class="form-select" id="inputGroupSelect01">
-                          <option selected></option>
-                          <option value="1"></option>
-                        </select>
-                      <div class="input-group mb-3">
-                        <label class="input-group-text" for="inputGroupSelect01">Juzgado</label>
-                        <select class="form-select" id="inputGroupSelect01">
-                          <option selected></option>
-                          <option value="1"></option>
-                        </select>
+                      <div class="form-floating col-md-12">
+                        <select type="text" name="idCliente" id="idCliente" class="form-control" placeholder="Tipo de Expediente"></select>
+                        <label for="idCliente"> Cliente</label>
                       </div>
+                        </select>
                       
                       <div class="row">
                       <div class="form-floating col-md-6">
@@ -123,7 +115,7 @@
                       <div class="row">
                       <div class="form-floating col-md-3">
                         <textarea type="text" name="caratura" id="caratura" class="form-control" placeholder="Caratura"></textarea>
-                        <label for="caratura"> Caratura</label>
+                        <label for="caratura"> Caratula</label>
                       </div>
                       <div class="form-floating col-md-3">
                         <input type="text" name="tipoJuicio" id="tipoJuicio" class="form-control" placeholder="Tipo de Juicio">

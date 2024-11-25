@@ -1,4 +1,5 @@
 import { seleccionarExpedientes, insertarExpedientes, actualizarExpedientes, eliminarExpedientes } from "../modelos/expedientes.js";
+import { seleccionarClientes } from "../modelos/clientes.js";
 /* Objetos del DOM */
 
 // Listado de clientes
@@ -13,6 +14,7 @@ const formularioModal = new bootstrap.Modal(document.querySelector('#formularioM
 const btnNuevo = document.querySelector('#btnNuevo');
 
 // Inputs
+const inputIdCLiente = document.querySelector('#idCliente');//
 const inputTipoExpediente = document.querySelector('#tipoExpediente');//
 const inputNroExpediente = document.querySelector('#nroExpediente');//
 const inputJuzgado = document.querySelector('#juzgado');//
@@ -35,8 +37,10 @@ let id;
 let mensajeAlerta;
 
 let expedientes = [];
+let clientes = [];
 let expedientesFiltrados = [];
 let expediente = {};
+let cliente = {};
 
 // Control de usuario
 let usuario = '';
@@ -51,8 +55,10 @@ let logueado = false;
 document.addEventListener('DOMContentLoaded', async () => {
     controlUsuario();
     expedientes = await obtenerExpedientes();
+    clientes = await obtenerClientes();
     expedientesFiltrados = filtrarPorTipoExpediente('');
     mostrarExpedientes();
+    mostrarClientes();
 });
 
 /**
@@ -78,6 +84,13 @@ const controlUsuario = () => {
 async function obtenerExpedientes() {
     expedientes = await seleccionarExpedientes();
     return expedientes;
+}
+/**
+ * Obtiene los clientes
+ */
+async function obtenerClientes() {
+    clientes = await seleccionarClientes();
+    return clientes;
 }
 
 /**
@@ -128,6 +141,14 @@ function mostrarExpedientes() {
     );
 }
 
+function mostrarClientes() {
+    idCliente.innerHTML = '';
+    clientes.map(cliente =>
+    (idCliente.innerHTML += `
+        <option value="${cliente.id}"> ${cliente.nombres} ${cliente.apellidoRsocial}
+         `)
+    );
+}
 /**
  * Filtro de los Expedientes
  */
